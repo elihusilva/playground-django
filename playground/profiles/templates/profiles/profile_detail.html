@@ -1,0 +1,54 @@
+{% extends 'includes/index.html' %}
+{% block title %}{{ profile.user.username }}{% endblock %}
+{% load static %}
+{% block content %}
+                <div class="user-profile">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="user-display">
+                                <div class="user-display-cover">
+                                    <img src="{% static 'assets/img/cover.jpg' %}" alt="cover">
+                                </div>
+                                <div class="user-display-bottom">
+                                    <div class="user-display-id">
+                                    {% if profile.avatar %}
+                                        <img class="user-display-avatar" src="{{ profile.avatar.url }}" alt="{{ profile.user.username }}-avatar">
+                                    {% else %}
+                                        <img class="user-display-avatar" src="{% static 'img/no-avatar.jpg' %}" alt="{{ profile.user.username }}-no-avatar">
+                                    {% endif %}
+                                        <div class="user-display-name text-center">{{ profile.user.username }}</div>
+                                    </div>
+                                    <div class="user-display-stats">
+                                        <div class="user-display-stat">
+                                        {% if profile.link %}
+                                            <span class="user-display-stat-counter"><span class="s7-link"></span></span>
+                                            <span class="user-display-stat-title text-lowercase"><a href="{{ profile.link }}" target="_blank" rel="nofollow noopener noreferrer">{{ profile.link }}</a></span>
+                                        {% endif %}
+                                            <br>
+                                        </div>
+                                    {% if profile.user != request.user and request.user.is_authenticated %}
+                                        <div class="user-display-stat"><span class="user-display-stat-counter"><a href="{% url 'messenger:new' profile.user.username %}" rel="nofollow"><span class="s7-paper-plane"></span></span><span class="user-display-stat-title">Enviar Mensaje</span></a></div>
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="user-info-list card card-default">
+                                <div class="card-header card-header-divider text-uppercase">Bio</div>
+                                    <div class="card-body">
+                                        <table class="no-border no-strip skills">
+                                            <tbody class="no-border-x no-border-y">
+                                                <tr>
+                                                    {{ profile.bio }}
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{% endblock %}

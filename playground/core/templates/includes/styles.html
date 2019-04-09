@@ -1,0 +1,12 @@
+        {% load static %}
+        <!-- Styles -->
+        <link href="{% static 'assets/lib/stroke-7/style.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/lib/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/css/app.css' %}" rel="stylesheet">
+        <!-- End Styles -->
+        {% if request.user.is_staff %}
+        <link href="{% static 'pages/css/custom_ckeditor.css' %}" rel="stylesheet">
+        <script src="{% static 'ckeditor/ckeditor-init.js' %}" type="text/javascript"></script>
+        <script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}" type="text/javascript"></script>
+        {% endif %}

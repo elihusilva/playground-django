@@ -1,0 +1,63 @@
+{% extends 'includes/index.html' %}
+{% block title %}Páginas{% endblock %}
+{% block content %}
+            {% for page in page_list|dictsort:'id' reversed %}
+                <div class="row page-head">
+                    <div class="col-md-4 page-head-heading text-center">
+                        <h2>{{ page.title }}</h2>
+                    </div>
+                    <div class="col-md-8 page-head-desc">
+                        <p class="lead">{{ page.content|striptags|safe|truncatechars:'200' }}</p>
+                        <p><a href="{% url 'pages:page' page.slug %}">Leer más</a>
+                        {% if request.user.is_staff %}
+                            | <a href="{% url 'pages:update' page.id %}" rel="nofollow">Editar</a> | <a href="{% url 'pages:delete' page.id %}" rel="nofollow">Eliminar</a>
+                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+            {% empty %}
+                <h2 class="text-center">No hay páginas registradas.</h2>
+            {% endfor %}
+                <div class="row">
+                    <div class="col-md-12">
+                    {% if is_paginated %}
+                        <nav>
+                            <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link"  href="?page={{ page_obj.previous_page_number }}" aria-label="Anterior">
+                                        <span class="s7-angle-left" aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Anterior">
+                                        <span class="s7-angle-left" aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% for i in paginator.page_range %}
+                                <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                                </li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Siguiente">
+                                        <span class="s7-angle-right" aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Siguiente">
+                                        <span class="s7-angle-right" aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            </ul>
+                        </nav>
+                    {% endif %}
+                    </div>
+                </div>
+{% endblock %}
+

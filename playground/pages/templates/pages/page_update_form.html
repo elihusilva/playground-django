@@ -1,0 +1,41 @@
+{% extends 'includes/index.html' %}
+{% block title %}Actualizando: {{ page.title }}{% endblock %}
+{% block content %}
+        <div class="row">
+          <div class="col-md-8">
+          {% if 'success' in request.GET %}
+            <div class="alert alert-theme alert-success alert-dismissible" role="alert">
+              <div class="icon">
+                <span class="s7-check"></span>
+              </div>
+              <div class="message">
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="s7-close" aria-hidden="true"></span></button>
+                Página actualizada correctamente.
+              </div>
+            </div>
+          {% endif %}
+            <div class="card card-default">
+              <div class="card-header card-header-divider">Actualizando <span class="card-subtitle">{{ page.title }}</span></div>
+              <div class="card-body">
+                <form action="" method="post">
+                  {% csrf_token %}
+                  <div class="form-group mt-1">
+                    {{ form.title }}
+                  </div>
+                  <div class="form-group">
+                    {{ form.content }}
+                  </div>
+                  <div class="form-group">
+                    {{ form.order }}
+                  </div>
+                  <div class="form-group">
+                    <p class="text-left">
+                      <button class="btn btn-space btn-primary" type="submit">Actualizar</button>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+{% endblock %}

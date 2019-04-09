@@ -1,0 +1,75 @@
+{% extends 'includes/index.html' %}
+{% load static %}
+{% block title %}Mi Cuenta{% endblock %}
+{% block content %}
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card card-default">
+                            <div class="card-header card-header-divider">Mi Cuenta</div>
+                            <div class="card-body">
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group mt-1">
+                                        <div class="user-stats-id">
+                                            <div class="user-stats-avatar">
+                                        {% if request.user.profile.avatar %}
+                                                <img class="rounded mr-3" src="{{ request.user.profile.avatar.url }}" alt="{{ request.user.username }}-profile-picture">
+                                            </div>
+                                            <div class="user-stats-info">
+                                                <span class="user-stats-position">¿Eliminar Foto de Perfil Actual? <input type="checkbox" id="avatar-clear" name="avatar-clear" /></span>
+                                            </div>
+                                        {% else %}
+                                                <img class="rounded mr-3" src="{% static 'img/no-avatar.jpg' %}" alt="{{ request.user.username }}-no-profile-picture">
+                                            </div>
+                                            <div class="user-stats-info">
+                                                <span class="user-stats-name">Sin Foto de Perfil</span>
+                                            </div>
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="inputfile" type="file" name="avatar" id="id_avatar">
+                                        <label class="btn btn-primary" for="id_avatar"> <i class="icon s7-upload"></i><span>Seleccionar Nueva Foto de Perfil</span></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-6">
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend"><span class="input-group-text"><span class="s7-user"></span></span></div>
+                                                    <input class="form-control" type="text" placeholder="{{ user.username }}" readonly>
+                                                </div>
+                                            </div>
+                                             <div class="col-12 col-lg-6">
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-square"></i></span></div>
+                                                    <input class="form-control" type="text" placeholder="{{ user.email }}" readonly>
+                                                </div>
+                                                <span class="alternative-message text-right">¿Deseas actualizar tu email? Haz <a href="{% url 'edit_email' %}" rel="nofollow">clic aquí</a></span><br>
+                                                <span class="alternative-message text-right">¿Deseas actualizar tu contraseña? Haz <a href="{% url 'password_change' %}" rel="nofollow">clic aquí</a></span>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.bio }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.link }}
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="text-left">
+                                            <button class="btn btn-space btn-primary" type="submit">Actualizar</button>
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
+{% block scripts %}
+        <script src="{% static 'assets/lib/jquery-ui/jquery-ui.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'assets/lib/select2/js/select2.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'assets/lib/select2/js/select2.full.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'assets/lib/bootstrap-slider/bootstrap-slider.min.js' %}" type="text/javascript"></script>
+{% endblock %}
+{% block script_function %}App.formElements();{% endblock %}

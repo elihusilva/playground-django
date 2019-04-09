@@ -1,0 +1,80 @@
+        <!-- Navbar Top -->
+        <nav class="navbar navbar-expand navbar-dark mai-top-header">
+            <div class="container">
+                <a class="navbar" href="{% url 'home' %}">Playground</a>
+                <ul class="nav navbar-nav mai-top-nav">
+                {% comment %} <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li> {% endcomment %}
+                </ul>
+            {% if request.user.is_authenticated %}
+            {% load static %}
+                <ul class="navbar-nav float-lg-right mai-icons-nav">
+                    <li class="dropdown nav-item mai-messages">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><span class="icon s7-comment"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="title">Mensajes</div>
+                                <div class="mai-scroller-messages ps">
+                                    <div class="content">
+                                        <ul>
+                            {% for thread in request.user.threads.all %}
+                                {% if thread.messages.all|length > 0 %}
+                                    {% for user in thread.users.all %}
+                                        {% if user != request.user %}
+                                            <li>
+                                                <a href="{% url 'messenger:message' thread.pk %}" rel="nofollow">
+                                                {% if user.profile.avatar %}
+                                                    <div class="img"><img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}-avatar"></div>
+                                                {% else %}
+                                                    <div class="img"><img src="{% static 'img/no-avatar.jpg' %}" alt="{{ user.username }}-no-avatar"></div>
+                                                {% endif %}
+                                                    <div class="content">
+                                                        <span class="date">{{ thread.messages.last.created_at|timesince }}</span>
+                                                        <span class="name">{{ user.username }}</span>
+                                                        <span class="desc">{{ thread.messages.last.content }}</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <a href="{% url 'messenger:messages' %}" rel="nofollow">Ver todo en Messenger</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav float-lg-right mai-user-nav">
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {% if request.user.profile.avatar %}
+                            <img src="{{ request.user.profile.avatar.url }}" alt="{{ request.user.username }}-avatar">
+                        {% else %}
+                            <img src="{% static 'img/no-avatar.jpg' %}" alt="{{ request.user.username }}-no-avatar">
+                        {% endif %}
+                            <span class="user-name">{{ request.user.username }}</span><span class="angle-down s7-angle-down"></span>
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" href="{% url 'settings' %}" rel="nofollow"><span class="icon s7-home"></span>Mi Cuenta</a>
+                            <a class="dropdown-item" href="{% url 'profiles:user' request.user.username %}" rel="nofollow"><span class="icon s7-user"></span>Perfil</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}" rel="nofollow"><span class="icon s7-power"></span>Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
+                {% else %}
+                <ul class="nav navbar-nav float-lg-right mai-user-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}" rel="nofollow">Acceder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}" rel="nofollow">Registrarse</a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+        <!-- End Navbar Top -->

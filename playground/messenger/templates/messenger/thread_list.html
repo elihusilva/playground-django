@@ -1,0 +1,36 @@
+{% extends 'includes/index.html' %}
+{% block title %}Messenger{% endblock %}
+{% load static %}
+{% block content %}
+                <div class="row">
+                    <div class="col-12">
+                        <ul>
+            {% for thread in request.user.threads.all %}
+                {% if thread.messages.all|length > 0 %}
+                    {% for user in thread.users.all %}
+                        {% if user != request.user %}
+                            <li class="timeline-item">
+                                <a href="{% url 'messenger:message' thread.pk %}" rel="nofollow">
+                                    <div class="timeline-content">
+                                        <div class="timeline-avatar">
+                                        {% if user.profile.avatar %}
+                                            <img class="circle" src="{{ user.profile.avatar.url }}" alt="{{ user.username }}-avatar">
+                                        {% else %}
+                                            <img class="circle" src="{% static 'img/no-avatar.jpg' %}" alt="{{ user.username }}-no-avatar">
+                                        {% endif %}
+                                        </div>
+                                        <div class="timeline-header">
+                                            <span class="timeline-time">{{ thread.messages.last.created_at|timesince }}</span>
+                                            <span class="timeline-autor">{{ user.username }}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+{% endblock %}
