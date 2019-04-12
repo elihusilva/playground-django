@@ -10,7 +10,7 @@
                     {% for user in thread.users.all %}
                         {% if user != request.user %}
                             <li class="timeline-item">
-                                <a href="{% url 'messenger:message' thread.pk %}" rel="nofollow">
+                                <a href="{% url 'messenger:message' thread.pk %}" rel="nofollow, noindex">
                                     <div class="timeline-content">
                                         <div class="timeline-avatar">
                                         {% if user.profile.avatar %}

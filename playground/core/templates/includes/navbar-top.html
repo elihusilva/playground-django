@@ -3,13 +3,13 @@
             <div class="container">
                 <a class="navbar" href="{% url 'home' %}">Playground</a>
                 <ul class="nav navbar-nav mai-top-nav">
-                {% comment %} <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li> {% endcomment %}
+                    <!-- <li class="nav-item"><a class="nav-link" href="#">Home</a></li>-->
                 </ul>
             {% if request.user.is_authenticated %}
             {% load static %}
                 <ul class="navbar-nav float-lg-right mai-icons-nav">
                     <li class="dropdown nav-item mai-messages">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><span class="icon s7-comment"></span></a>
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" rel="nofollow, noindex" role="button" aria-expanded="false"><span class="icon s7-comment"></span></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="title">Mensajes</div>
@@ -21,7 +21,7 @@
                                     {% for user in thread.users.all %}
                                         {% if user != request.user %}
                                             <li>
-                                                <a href="{% url 'messenger:message' thread.pk %}" rel="nofollow">
+                                                <a href="{% url 'messenger:message' thread.pk %}" rel="nofollow, noindex">
                                                 {% if user.profile.avatar %}
                                                     <div class="img"><img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}-avatar"></div>
                                                 {% else %}
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="footer">
-                                    <a href="{% url 'messenger:messages' %}" rel="nofollow">Ver todo en Messenger</a>
+                                    <a href="{% url 'messenger:messages' %}" rel="nofollow, noindex">Ver todo en Messenger</a>
                                 </div>
                             </li>
                         </ul>
@@ -50,7 +50,7 @@
                 </ul>
                 <ul class="nav navbar-nav float-lg-right mai-user-nav">
                     <li class="dropdown nav-item">
-                        <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" rel="nofollow, noindex" role="button" aria-expanded="false">
                         {% if request.user.profile.avatar %}
                             <img src="{{ request.user.profile.avatar.url }}" alt="{{ request.user.username }}-avatar">
                         {% else %}
@@ -59,19 +59,19 @@
                             <span class="user-name">{{ request.user.username }}</span><span class="angle-down s7-angle-down"></span>
                         </a>
                         <div class="dropdown-menu" role="menu">
-                            <a class="dropdown-item" href="{% url 'settings' %}" rel="nofollow"><span class="icon s7-home"></span>Mi Cuenta</a>
-                            <a class="dropdown-item" href="{% url 'profiles:user' request.user.username %}" rel="nofollow"><span class="icon s7-user"></span>Perfil</a>
-                            <a class="dropdown-item" href="{% url 'logout' %}" rel="nofollow"><span class="icon s7-power"></span>Cerrar Sesión</a>
+                            <a class="dropdown-item" href="{% url 'settings' %}" rel="nofollow, noindex"><span class="icon s7-home"></span>Mi Cuenta</a>
+                            <a class="dropdown-item" href="{% url 'profiles:user' request.user.username %}" rel="nofollow, noindex"><span class="icon s7-user"></span>Perfil</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}" rel="nofollow, noindex"><span class="icon s7-power"></span>Cerrar Sesión</a>
                         </div>
                     </li>
                 </ul>
                 {% else %}
                 <ul class="nav navbar-nav float-lg-right mai-user-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}" rel="nofollow">Acceder</a>
+                        <a class="nav-link" href="{% url 'login' %}" rel="nofollow, noindex">Acceder</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signup' %}" rel="nofollow">Registrarse</a>
+                        <a class="nav-link" href="{% url 'signup' %}" rel="nofollow, noindex">Registrarse</a>
                     </li>
                 </ul>
                 {% endif %}

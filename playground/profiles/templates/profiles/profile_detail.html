@@ -27,7 +27,7 @@
                                             <br>
                                         </div>
                                     {% if profile.user != request.user and request.user.is_authenticated %}
-                                        <div class="user-display-stat"><span class="user-display-stat-counter"><a href="{% url 'messenger:new' profile.user.username %}" rel="nofollow"><span class="s7-paper-plane"></span></span><span class="user-display-stat-title">Enviar Mensaje</span></a></div>
+                                        <div class="user-display-stat"><span class="user-display-stat-counter"><a href="{% url 'messenger:new' profile.user.username %}" rel="nofollow, noindex"><span class="s7-paper-plane"></span></span><span class="user-display-stat-title">Enviar Mensaje</span></a></div>
                                     {% endif %}
                                     </div>
                                 </div>

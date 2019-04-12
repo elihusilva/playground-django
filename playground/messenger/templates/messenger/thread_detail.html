@@ -17,7 +17,7 @@
                                     {% endif %}
                                     </div>
                                     <div class="timeline-header">    
-                                        <span class="timeline-autor"><a href="{% url 'profiles:user' request.user.username %}" rel="nofollow">{{ request.user.username }}</a></span>
+                                        <span class="timeline-autor"><a href="{% url 'profiles:user' request.user.username %}" rel="nofollow, noindex">{{ request.user.username }}</a></span>
                                         <span class="timeline-time">Hace {{ message.created_at|timesince }}</span>
                                     </div>
                                     <div class="timeline-summary">
@@ -31,7 +31,7 @@
                                     {% endif %}
                                     </div>
                                     <div class="timeline-header">    
-                                        <span class="timeline-autor"><a href="{% url 'profiles:user' message.user.username %}" rel="nofollow">{{ message.user.username }}</a></span>
+                                        <span class="timeline-autor"><a href="{% url 'profiles:user' message.user.username %}" rel="nofollow, noindex">{{ message.user.username }}</a></span>
                                         <span class="timeline-time">Hace {{ message.created_at|timesince }}</span>
                                     </div>
                                     <div class="timeline-summary">
@@ -76,7 +76,7 @@
                                             {% endif %}
                                         '</div>'+
                                         '<div class="timeline-header">' +
-                                        '<span class="timeline-autor"><a href="{% url 'profiles:user' request.user.username %}" rel="nofollow">{{ request.user.username }}</a></span>' +
+                                        '<span class="timeline-autor"><a href="{% url 'profiles:user' request.user.username %}" rel="nofollow, noindex">{{ request.user.username }}</a></span>' +
                                         '<span class="timeline-time">Hace un momento</span>' +
                                         '</div>'+
                                         '<div class="timeline-summary">'+

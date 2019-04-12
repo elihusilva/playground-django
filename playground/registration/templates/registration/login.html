@@ -23,7 +23,7 @@
         <div class="splash-container row">
           <div class="col-md-6 user-message">
             <span class="splash-message text-right">Playground<br></span>
-            <span class="alternative-message text-right">¿No tienes una cuenta? <a href="{% url 'signup' %}" rel="nofollow">Registrate aquí</a></span>
+            <span class="alternative-message text-right">¿No tienes una cuenta? <a href="{% url 'signup' %}" rel="nofollow, noindex">Registrate aquí</a></span>
           </div>
           <div class="col-md-6 form-message"><!-- <img class="logo-img mb-4" src="" alt="logo" width="169" height="28"> --><span class="splash-description text-center mt-5 mb-5">¡Accesa a tu cuenta!</span>
             <form action="" method="post">
@@ -46,10 +46,10 @@
             </form>
             <div class="form-group row login-tools">
               <div class="col-sm-6 pt-2 text-sm-right login-forgot-password">
-                <a href="{% url 'password_reset' %}" rel="nofollow">¿Olvidaste tu contraseña?</a>
+                <a href="{% url 'password_reset' %}" rel="nofollow, noindex">¿Olvidaste tu contraseña?</a>
               </div>
             </div>
-            <div class="out-links"><a href="#">&copy; {% now 'Y' %} Elihu Silva</a></div>
+            <div class="out-links"><a href="{% url 'home' %}" rel="nofollow, noindex">&copy; {% now 'Y' %} Playground</a></div>
           </div>
         </div>
       </div>

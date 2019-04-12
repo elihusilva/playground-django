@@ -11,7 +11,7 @@
                         </button>
                         <div class="navbar-collapse collapse mai-nav-tabs" id="mai-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li class="nav-item parent {% if request.path == '/' %}open{% endif %}"><a class="nav-link" href="#" role="button" aria-expanded="false"><span class="icon s7-home"></span><span>Inicio</span></a>
+                                <li class="nav-item parent {% if request.path == '/' %}open{% endif %}"><a class="nav-link" href="#" rel="nofollow, noindex" role="button" aria-expanded="false"><span class="icon s7-home"></span><span>Inicio</span></a>
                                     <ul class="mai-nav-tabs-sub mai-sub-nav nav">
                                         <li class="nav-item">
                                             <a class="nav-link" href="{% url 'home' %}">
@@ -25,11 +25,6 @@
                                             </a>
                                         </li>
                                         {% endif %}
-                                        {% comment %} <li class="nav-item dropdown parent"><a class="nav-link" href="ui-elements.php" data-toggle="dropdown"><span class="icon s7-diamond"></span><span class="name">UI Elements</span></a>
-                                            <div class="dropdown-menu mai-sub-nav" role="menu">
-                                                <a class="dropdown-item" href="#">General</a>
-                                            </div>
-                                        </li>  {% endcomment %}
                                     </ul>
                                 </li>
                                 {% include 'pages/includes/pages_menu.html' %}
@@ -40,9 +35,9 @@
                             </ul>
                         </div>
                     </nav>
-                    <div class="search">
+                    <!-- <div class="search">
                         <input type="text" placeholder="Buscar..." name="q"><span class="s7-search"></span>
-                    </div>
+                    </div> -->
                 </div>
             </nav>
             <!-- End Navbar Subheader -->

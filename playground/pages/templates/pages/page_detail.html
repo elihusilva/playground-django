@@ -6,6 +6,6 @@
                 {{ page.content|safe }}
                 {% if request.user.is_staff %}
                     <br><br>
-                    <p><a href="{% url 'pages:update' page.id %}" rel="nofollow">Editar</a> | <a href="{% url 'pages:delete' page.id %}" rel="nofollow">Eliminar</a></p>
+                    <p><a href="{% url 'pages:update' page.id %}" rel="nofollow, noindex">Editar</a> | <a href="{% url 'pages:delete' page.id %}" rel="nofollow, noindex">Eliminar</a></p>
                 {% endif %}
 {% endblock %}

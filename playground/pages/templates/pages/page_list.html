@@ -10,7 +10,7 @@
                         <p class="lead">{{ page.content|striptags|safe|truncatechars:'200' }}</p>
                         <p><a href="{% url 'pages:page' page.slug %}">Leer más</a>
                         {% if request.user.is_staff %}
-                            | <a href="{% url 'pages:update' page.id %}" rel="nofollow">Editar</a> | <a href="{% url 'pages:delete' page.id %}" rel="nofollow">Eliminar</a>
+                            | <a href="{% url 'pages:update' page.id %}" rel="nofollow, noindex">Editar</a> | <a href="{% url 'pages:delete' page.id %}" rel="nofollow, noindex">Eliminar</a>
                         {% endif %}
                         </p>
                     </div>
@@ -25,31 +25,31 @@
                             <ul class="pagination">
                             {% if page_obj.has_previous %}
                                 <li class="page-item">
-                                    <a class="page-link"  href="?page={{ page_obj.previous_page_number }}" aria-label="Anterior">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Anterior" rel="nofollow, noindex">
                                         <span class="s7-angle-left" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             {% else %}
                                 <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Anterior">
+                                    <a class="page-link" href="#" aria-label="Anterior" rel="nofollow, noindex">
                                         <span class="s7-angle-left" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             {% endif %}
                             {% for i in paginator.page_range %}
                                 <li class="page-item {% if page_obj.number == i %}active{% endif %}">
-                                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                                    <a class="page-link" href="?page={{ i }}" rel="nofollow, noindex">{{ i }}</a>
                                 </li>
                             {% endfor %}
                             {% if page_obj.has_next %}
                                 <li class="page-item">
-                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Siguiente">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Siguiente" rel="nofollow, noindex">
                                         <span class="s7-angle-right" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             {% else %}
                                 <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Siguiente">
+                                    <a class="page-link" href="#" aria-label="Siguiente" rel="nofollow, noindex">
                                         <span class="s7-angle-right" aria-hidden="true"></span>
                                     </a>
                                 </li>

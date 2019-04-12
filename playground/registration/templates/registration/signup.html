@@ -49,9 +49,9 @@
                             <div class="form-group sign-up-submit"><button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button></div>
                         </form>
                         <br>
-                        <div class="out-links"><a href="#">&copy; {% now 'Y' %} Elihu Silva</a></div>
+                        <div class="out-links"><a href="{% url 'home' %}" rel="nofollow, noindex">&copy; {% now 'Y' %} Playground</a></div>
                     </div>
-                    <div class="col-md-6 user-message"><span class="splash-message text-left">Bienvenido a <br> Playground<br></span><span class="alternative-message text-right">¿Ya tienes una cuenta? <a href="{% url 'login' %}" rel="nofollow">Inicia sesión</a></span></div>
+                    <div class="col-md-6 user-message"><span class="splash-message text-left">Bienvenido a <br> Playground<br></span><span class="alternative-message text-right">¿Ya tienes una cuenta? <a href="{% url 'login' %}" rel="nofollow, noindex">Inicia sesión</a></span></div>
                 </div>
             </div>
         </div>

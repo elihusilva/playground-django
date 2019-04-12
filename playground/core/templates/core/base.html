@@ -34,14 +34,14 @@
             <ul class="navbar-nav">
               {% if not request.user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Acceder</a>
+                <a class="nav-link" href="{% url 'login' %}" rel="nofollow, noindex">Acceder</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'signup' %}">Registro</a>
+                <a class="nav-link" href="{% url 'signup' %}" rel="nofollow, noindex">Registro</a>
               </li>
               {% else %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                <a class="nav-link" href="{% url 'logout' %}" rel="nofollow, noindex">Cerrar Sesión</a>
               </li>
               {% endif %}
             </ul>
