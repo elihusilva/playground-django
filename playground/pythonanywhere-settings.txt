@@ -1,10 +1,10 @@
-# Source code
+# Source code path
 /home/elihusilva/playground-django/playground
 
-# Virtualenv
+# Virtualenv path
 /home/elihusilva/.virtualenvs/django
 
-# WSGI Config
+# WSGI settings
 import os
 import sys
 

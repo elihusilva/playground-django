@@ -131,6 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# Add the line below on Production
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Ubicación de archivos multimedia.
 MEDIA_URL = '/media/'
