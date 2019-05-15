@@ -4,6 +4,20 @@
 {% block content %}
                 <div class="row">
                     <div class="col-md-8">
+                    {% if 'profile-updated' in request.GET %}
+                        <div class="alert alert-theme alert-success alert-dismissible" role="alert">
+                            <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="s7-close" aria-hidden="true"></span></button>
+                            <div class="icon"><span class="s7-check"></span></div>
+                            <div class="message"><strong>¡Perfil actualizado correctamente!</strong></div>
+                        </div>
+                    {% endif %}
+                    {% if 'email-updated' in request.GET %}
+                        <div class="alert alert-theme alert-success alert-dismissible" role="alert">
+                            <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="s7-close" aria-hidden="true"></span></button>
+                            <div class="icon"><span class="s7-check"></span></div>
+                            <div class="message"><strong>¡Email actualizado correctamente!</strong></div>
+                        </div>
+                    {% endif %}
                         <div class="card card-default">
                             <div class="card-header card-header-divider">Mi Cuenta</div>
                             <div class="card-body">

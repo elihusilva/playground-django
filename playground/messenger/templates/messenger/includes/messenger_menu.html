@@ -1,4 +1,5 @@
-                                <li class="nav-item parent {% if request.path == '/messages/m/' %}open{% endif %}"><a class="nav-link" href="#" rel="nofollow, noindex" role="button" aria-expanded="false"><span class="icon s7-chat"></span><span>Messenger</span></a>
+                                <li class="nav-item parent {% if request.path == '/messages' %}open{% endif %}">
+                                    <a class="nav-link" href="#" rel="nofollow, noindex" role="button" aria-expanded="false"><span class="icon s7-chat"></span><span>Messenger</span></a>
                                     <ul class="mai-nav-tabs-sub mai-sub-nav nav">
                                         <li class="nav-item">
                                             <a class="nav-link" href="{% url 'messenger:messages' %}" rel="nofollow, noindex"><span class="name">Messenger</span></a>
