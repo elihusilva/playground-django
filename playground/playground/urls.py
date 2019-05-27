@@ -41,9 +41,16 @@ urlpatterns = [
     path('account/', include('registration.urls'))
 ]
 
-# Título en el modo de administrador.
-admin.site.site_header = 'Playground'
-
 if settings.DEBUG:
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Configuraciones en la interfaz del panel de administración.
+# Título.
+admin.site.site_header = 'Playground'
+
+# Subtitulo.
+admin.site.index_title = 'Dashboard'
+
+# Title tag.
+admin.site.site_title = 'Playground'
